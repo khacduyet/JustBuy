@@ -617,9 +617,9 @@
                 <a href="#" class="payment-block">
                     <img src="client/image/icon/payment.png" alt="">
                 </a>
-                <p class="copyright-text">Copyright © 2019 <a href="#" class="author">Pustok</a>. All Right Reserved.
+                <p class="copyright-text">Copyright © 2021 <a href="#" class="author">JustBuy</a>. All Right Reserved.
                     <br>
-                    Design By Pustok</p>
+                    Design By JustBuy</p>
             </div>
         </div>
     </footer>
