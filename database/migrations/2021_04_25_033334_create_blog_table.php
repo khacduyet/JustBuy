@@ -19,7 +19,9 @@ class CreateBlogTable extends Migration
             $table->text('image');
             $table->text('content');
             $table->tinyInteger('status');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

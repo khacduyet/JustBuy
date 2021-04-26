@@ -15,12 +15,12 @@ class CreateCommentTable extends Migration
     {
         Schema::create('comment', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('pro_id');
             $table->text('message');
             $table->tinyInteger('status');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('customer_id')->references('id')->on('customer');
             $table->foreign('pro_id')->references('id')->on('product');
         });
     }
