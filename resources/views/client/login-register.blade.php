@@ -1,5 +1,6 @@
 @extends('client.layouts.layout')
-@section('content')  		
+@section('content')  	
+@section('title',"Login - Register")	
 		<section class="breadcrumb-section">
 			<h2 class="sr-only">Site Breadcrumb</h2>
 			<div class="container">

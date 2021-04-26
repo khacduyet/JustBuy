@@ -1,5 +1,6 @@
 @extends('client.layouts.layout')
 @section('content')
+@section('title',"Blog")
 		
 		<section class="breadcrumb-section">
             <h2 class="sr-only">Site Breadcrumb</h2>

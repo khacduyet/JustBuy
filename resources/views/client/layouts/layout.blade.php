@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pustok - Book Store HTML Template</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Use Minified Plugins Version For Fast Page Load -->
     <link rel="stylesheet" type="text/css" media="screen" href="client/css/plugins.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="client/css/main.css" />
-    <link rel="shortcut icon" type="client/image/x-icon" href="client/image/favicon.ico">
+    <link rel="shortcut icon" type="client/image/x-icon" href="client/image/logo.png">
 </head>
 
 <body>

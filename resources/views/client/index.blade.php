@@ -1,5 +1,6 @@
 @extends('client.layouts.layout')
 @section('content')
+@section('title',"JustBuy - Book Store")
 <main>
      <!--    Hero Area
     ===================================== -->
