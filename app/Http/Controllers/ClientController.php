@@ -37,8 +37,11 @@ class ClientController extends Controller
     public function my_account(){
     	return view("client.my-account");
     }
-    public function login_register(){
-    	return view("client.login-register");
+    public function login(){
+    	return view("client.login");
+    }
+    public function register(){
+    	return view("client.register");
     }
     public function checkout(){
     	return view("client.checkout");

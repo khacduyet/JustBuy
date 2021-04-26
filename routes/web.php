@@ -27,6 +27,7 @@ Route::get('/blog-detail', [ClientController::class, 'blog_detail']) -> name("bl
 Route::get('/wishlist', [ClientController::class, 'wishlist']) -> name("wishlist");
 Route::get('/order-complete', [ClientController::class, 'order_complete']) -> name("order-complete");
 Route::get('/my-account', [ClientController::class, 'my_account']) -> name("my-account");
-Route::get('/login-register', [ClientController::class, 'login_register']) -> name("login-register");
+Route::get('/login', [ClientController::class, 'login']) -> name("login");
+Route::get('/register', [ClientController::class, 'register']) -> name("register");
 Route::get('/checkout', [ClientController::class, 'checkout']) -> name("checkout");
 Route::get('/cart', [ClientController::class, 'cart']) -> name("cart");
