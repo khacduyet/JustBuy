@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Product extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Category extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'category';
+    protected $table = 'product';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -28,6 +28,29 @@ class Category extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    protected $casts = ['list_image' => 'array'];
+
+    public function setPhotosAttribute($value)
+    {
+        $attribute_name = "list_image";
+        $disk = "uploads";
+        $destination_path = "/uploads";
+
+        $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function($obj) {
+            if (count((array)$obj->photos)) {
+                foreach ($obj->photos as $file_path) {
+                    \Storage::disk('/uploads')->delete($file_path);
+                }
+            }
+        });
+    }
+
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
 
     public function fetchCategory()

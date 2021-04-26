@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Contact extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Category extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'category';
+    protected $table = 'contact';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -28,12 +28,7 @@ class Category extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
 
-    public function fetchCategory()
-    {
-        return $this->fetch(\App\Models\Category::class);
-    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
