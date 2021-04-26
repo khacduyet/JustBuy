@@ -65,7 +65,7 @@
                     <div class="col-lg-7 col-md-7 col-12 mt--30 mt-md--0">
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
-                            <form id="contact-form" action="https://demo.hasthemes.com/pustok-preview/pustok/php/mail.php" method="post" class="contact-form">
+                            <form id="contact-form"  method="post" class="contact-form" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Frontend;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/shop', [ClientController::class, 'shop']) -> name("shop");
 Route::get('/about', [ClientController::class, 'about']) -> name("about");
 Route::get('/blog', [ClientController::class, 'blog']) -> name("blog");
 Route::get('/contact', [ClientController::class, 'contact']) -> name("contact");
+Route::post('/contact', [ContactController::class, 'contact_store']) -> name("contact");
 Route::get('/product-detail', [ClientController::class, 'product_detail']) -> name("product-detail");
 Route::get('/blog-detail', [ClientController::class, 'blog_detail']) -> name("blog-detail");
 Route::get('/wishlist', [ClientController::class, 'wishlist']) -> name("wishlist");
