@@ -79,16 +79,17 @@ class ProductCrudController extends CrudController
             }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
         ]);
         CRUD::field('descriptions')->type('ckeditor');
-        $this->crud->addField([   // Upload
-            'name'      => 'list_image',
-            'label'     => 'Photos',
-            'type'      => 'upload_multiple',
-            'upload'    => true,
-            'disk'      => 'uploads', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
-            // optional:
-            'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
+
+        $this->crud->addField([
+            'label' => "Profile Image",
+            'name' => "list_image",
+            'type' => 'image',
+            'crop' => false, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            'disk'      => 'uploads', // in case you need to show images from a different disk
+            'prefix'    => 'uploads/images/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
         ]);
-        // CRUD::field('list_image');
+
         CRUD::field('status');
 
         /**
