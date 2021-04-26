@@ -65,26 +65,59 @@
                     <div class="col-lg-7 col-md-7 col-12 mt--30 mt-md--0">
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
-                            <form id="contact-form"  method="post" class="contact-form" enctype="multipart/form-data">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <li>{{ $errors->has('message') }}</li>
+                                       
+                                    </ul>
+                                </div>
+                            @endif
+                            <form  method="post" class="contact-form" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Name <span class="required">*</span></label>
                                             <input type="text" id="con_name" name="con_name" class="form-control"
                                                 required>
+                                                @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('name') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Your Email <span class="required">*</span></label>
+                                            {{-- <label>Your Email <span class="required">*</span></label> --}}
                                             <input type="email" id="con_email" name="con_email" class="form-control"
                                                 required>
+                                                @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('email') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Phone*</label>
                                             <input type="text" id="con_phone" name="con_phone" class="form-control">
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('phone') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -92,6 +125,14 @@
                                             <label>Your Message</label>
                                             <textarea id="con_message" name="con_message"
                                                 class="form-control"></textarea>
+                                                @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('message') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -99,7 +140,6 @@
                                             <button type="submit" value="submit" id="submit" class="btn btn-black"
                                                 name="submit">send</button>
                                         </div>
-                                        <div class="form__output"></div>
                                     </div>
                                 </div>
                             </form>

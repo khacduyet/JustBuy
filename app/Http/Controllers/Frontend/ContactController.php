@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -13,9 +15,13 @@ class ContactController extends Controller
 		public function contact_store(Request $request,Contact $contact){
 			$model = $contact->add();
 	        if ($contact) {
-	            return redirect()->route('contact') -> with('message','Thêm mới thành công');
+                // dd($contact);
+	            // return redirect()->route('contact') -> with('message','Thêm mới thành công');
+                return redirect()->route('contact');
 	        }else{
-	            return redirect()->back()->with('message','Thêm mới thất bại' );
+                // dd("false ");
+	            // return redirect()->back()->with('message','Thêm mới thất bại' );
+                return redirect()->back();
 	        }
 		}
 }
