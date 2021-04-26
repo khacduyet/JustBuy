@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,9 @@ Route::get('/my-account', [ClientController::class, 'my_account']) -> name("my-a
 Route::get('/login', [ClientController::class, 'login']) -> name("login");
 Route::get('/register', [ClientController::class, 'register']) -> name("register");
 Route::get('/checkout', [ClientController::class, 'checkout']) -> name("checkout");
-Route::get('/cart', [ClientController::class, 'cart']) -> name("cart");
+// cart
+Route::get('/cart', [CartController::class, 'cart']) -> name("cart");
+Route::get('/add-cart/{id}', [CartController::class, 'add_cart']) -> name('add_cart');
+Route::get('/delete-cart/{id}', [CartController::class, 'delete_cart']) -> name('delete-cart');
+Route::get('/clear-cart', [CartController::class, 'clear_cart']) -> name('clear-cart');
+Route::post('/update-cart/{pro_id}', [CartController::class, 'update_cart']) -> name('update-cart');
