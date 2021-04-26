@@ -23,8 +23,7 @@ class CreateCustomerTable extends Migration
             $table->tinyInteger('status');
             $table->timestamps();
             $table->string('code');
-            $table->timestamp('created_at')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamp('time_code')->nullable();
         });
     }
 
