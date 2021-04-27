@@ -36,6 +36,14 @@ class ClientController extends Controller
         $blog = Blog::all();
     	return view("client.blog",compact('blog'));
     }
+    public function blog_detail($id){
+        $blog = Blog::where('id',$id)->first();
+        if($blog == null){
+            return view("errors.400");
+        }else{
+            return view("client.blog-detail",compact('blog'));
+        }
+    }
     public function contact()
     {
         return view("client.contact");
@@ -43,10 +51,6 @@ class ClientController extends Controller
     public function product_detail()
     {
         return view("client.product-detail");
-    }
-    public function blog_detail()
-    {
-        return view("client.blog-detail");
     }
     public function wishlist()
     {

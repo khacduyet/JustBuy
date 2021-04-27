@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="{{ asset('') }}" >
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Use Minified Plugins Version For Fast Page Load -->
@@ -13,6 +14,8 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=124776586268586&autoLogAppEvents=1" nonce="M55EyKjV"></script>
     <div class="site-wrapper" id="top">
         <div class="site-header header-3  d-none d-lg-block">
             <div class="container">
