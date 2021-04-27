@@ -956,26 +956,19 @@
 							<div class="single-block">
 								<h3 class="sidebar-title">Categories</h3>
 								<ul class="sidebar-menu--shop">
-									<li><a href="#">Accessories (5)</a></li>
-									<li><a href="#">Arts & Photography (10)</a></li>
-									<li><a href="#">Biographies (16)</a></li>
-									<li><a href="#">Business & Money (0)</a></li>
-									<li><a href="#">Calendars (6)</a></li>
-									<li><a href="#">Children's Books (9)</a></li>
-									<li><a href="#">Comics (16)</a></li>
-									<li><a href="#">Cookbooks (7)</a></li>
-									<li><a href="#">Education (3)</a></li>
-									<li><a href="#">House Plants (6)</a></li>
-									<li><a href="#">Indoor Living (9)</a></li>
-									<li><a href="#">Perfomance Filters (5)</a></li>
-									<li><a href="#">Shop (16)</a>
+								@foreach($category as $cat)     
+                                    @if($cat -> parent_id == 0) 
+									<li><a href="#">{{$cat -> name}} (16)</a>
 										<ul class="inner-cat-items">
-											<li><a href="#">Saws (0)</a></li>
-											<li><a href="#">Concrete Tools (7)</a></li>
-											<li><a href="#">Drills (2)</a></li>
-											<li><a href="#">Sanders (1)</a></li>
+										@foreach($category as $cat1)  
+											@if($cat -> id == ($cat1 -> parent_id))
+											<li><a href="#">{{$cat1 -> name}} (0)</a></li>
+											@endif
+										@endforeach
 										</ul>
 									</li>
+									@endif
+								@endforeach
 								</ul>
 							</div>
 							<!-- Price -->
