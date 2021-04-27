@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use CrudTrait;
 
     /*
@@ -28,7 +30,6 @@ class Category extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
 
     public function fetchCategory()
     {
@@ -39,7 +40,10 @@ class Category extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id','id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -13,6 +13,7 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
  */
 class CategoryCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation { reorder as traitReorder; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
@@ -24,6 +25,24 @@ class CategoryCrudController extends CrudController
      * 
      * @return void
      */
+
+    protected function setupReorderOperation()
+    {
+        // define which model attribute will be shown on draggable elements 
+        $this->crud->set('reorder.label', 'name');
+        // define how deep the admin is allowed to nest the items
+        // for infinite levels, set it to 0
+        $this->crud->set('reorder.max_level', 3);
+    }
+
+    public function reorder()
+    {
+        // your custom code here
+
+        // call the method in the trait
+        return $this->traitReorder();
+    }
+
     public function setup()
     {
         CRUD::setModel(\App\Models\Category::class);
@@ -39,7 +58,9 @@ class CategoryCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+       
+        CRUD::column('name')->type('text');
+        CRUD::column('status');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,8 +79,9 @@ class CategoryCrudController extends CrudController
     {
         CRUD::setValidation(CategoryRequest::class);
 
-        CRUD::setFromDb(); // fields
-
+        // CRUD::setFromDb(); // fields
+        CRUD::addField(['name' => 'name', 'type' => 'text']); 
+        CRUD::addField(['name' => 'status']); 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
