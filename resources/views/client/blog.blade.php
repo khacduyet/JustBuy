@@ -18,8 +18,8 @@
         <section class="inner-page-sec-padding-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-9 order-lg-2 mb--40 mb-lg--0">
-                        <div class="blog-list-cards">
+                    <div class="col-lg-9 order-lg-2 mb--40 mb-lg--0" >
+                        <div class="blog-list-cards" id="filterResult">
                             @foreach($blog as $blg)
                             <div class="blog-card card-style-list">
                                 <div class="row">
@@ -55,7 +55,7 @@
                             <div class="single-block">
                                 <h2 class="sidebar-title mb--30">Search</h2>
                                 <div class="site-mini-search">
-                                    <input type="text" placeholder="Search">
+                                    <input type="text" placeholder="Search" id="keySearchBlog">
                                     <button><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
@@ -79,27 +79,6 @@
                                     <li><a href="#">Maecenas ultricies</a></li>
                                 </ul>
                             </div>
-                            <div class="single-block ">
-                                <h2 class="sidebar-title mb--30">Tags</h2>
-                                <ul class="sidebar-tag-list">
-                                    <li><a href="#"> Chilled</a></li>
-                                    <li><a href="#">Dark</a></li>
-                                    <li> <a href="#">Euro</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Hardware</a></li>
-                                    <li><a href="#">Hat</a></li>
-                                    <li><a href="#">Hipster</a></li>
-                                    <li><a href="#">Holidays</a></li>
-                                    <li><a href="#">Light</a></li>
-                                    <li><a href="#">Mac</a></li>
-                                    <li><a href="#">Place</a></li>
-                                    <li><a href="#">T-Shirt</a></li>
-                                    <li><a href="#">Travel</a></li>
-                                    <li><a href="#">Video-2</a></li>
-                                    <li><a href="#">White</a></li>
-                                </ul>
-                            </div>
                             <!-- Promo Block -->
                             <div class="single-block">
                                 <a href="#" class="promo-image sidebar">
@@ -112,5 +91,15 @@
             </div>
         </section>
 
-
+<script>
+    $(document).ready(function() {
+        $("#keySearchBlog").on("keyup", function() {
+            var nameBlog = $(this).val();
+            $.get('/search-blog/' + nameBlog, function(data) {
+                $("#filterResult").html(data);
+            })
+            alert("dsds")
+        });
+    });
+</script>
 @endsection

@@ -36,9 +36,19 @@ Route::post('/login', [LoginController::class, 'postLogin']) -> name("login");
 Route::get('/register', [LoginController::class, 'register']) -> name("register");
 Route::post('/register', [LoginController::class, 'postRegister']) -> name("register");
 Route::get('/checkout', [ClientController::class, 'checkout']) -> name("checkout");
+
+
+Route::get('/filter-product-by-categrory/{id}', [ClientController::class, 'filterProductByCategoryId']) -> name("filter-product-by-categrory");
+Route::get('/filter-product-by-author/{name}', [ClientController::class, 'filterProductByAuthor']) -> name("filter-product-by-author");
+Route::get('/show-product/{page}', [ClientController::class, 'showProduct']) -> name("show-product");
+Route::get('/sort-product/{value}', [ClientController::class, 'sortProduct']) -> name("sort-product");
+Route::get('/search-blog/{name}', [ClientController::class, 'searchBlog']) -> name("search-blog");
+
+
 // cart
 Route::get('/cart', [CartController::class, 'cart']) -> name("cart");
 Route::get('/add-cart/{id}', [CartController::class, 'add_cart']) -> name('add_cart');
 Route::get('/delete-cart/{id}', [CartController::class, 'delete_cart']) -> name('delete-cart');
 Route::get('/clear-cart', [CartController::class, 'clear_cart']) -> name('clear-cart');
 Route::post('/update-cart/{pro_id}', [CartController::class, 'update_cart']) -> name('update-cart');
+
