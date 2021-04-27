@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudField;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -40,13 +41,27 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-        // CRUD::addColumn([
-        //     'name'    => 'photos',
-        //     'label'   => 'Photos',
-        //     'type'    => 'upload_multiple',
-        //     // 'disk' => 'public', // filesystem disk if you're using S3 or something custom
-        // ]);
+        CRUD::column('name');
+        CRUD::column('price')->type('number');
+        CRUD::column('sale_price')->type('number');
+        // $this->crud->addColumn([
+        //     // 1-n relationship
+        //     'label' => "Category", // Table column heading
+        //     'type' => "select",
+        //     'name' => 'cat_id', // the column that contains the ID of that connected entity;
+        //     'entity' => 'fetchCategory', // the method that defines the relationship in your Model
+        //     'attribute' => "name", // foreign key attribute that is shown to user
+        //     'model' => "App\Models\Category", // foreign key model
+        //  ]);
+         CRUD::addColumn([
+            'name'    => 'photos',
+            'label'   => 'Photos',
+            'type'    => 'array',
+            // 'disk' => 'public', // filesystem disk if you're using S3 or something custom
+        ]);
+        CRUD::column('status ');
+        // CRUD::setFromDb(); // columns
+        
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -70,7 +85,7 @@ class ProductCrudController extends CrudController
         CRUD::field('sale_price')->type('number');
         $this->crud->addField([  // Select2
             'label'     => "Category",
-            'type'      => 'select2',
+            'type'      => 'select2_nested',
             'name'      => 'cat_id', // the db column for the foreign key
 
             // optional

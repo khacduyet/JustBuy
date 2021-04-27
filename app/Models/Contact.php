@@ -4,9 +4,12 @@ namespace App\Models;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 class Contact extends Model
 {
+    use CrudTrait;
+    
     protected $table = 'contact';
 
     protected $fillable = ['name','email','phone','message','status'];
