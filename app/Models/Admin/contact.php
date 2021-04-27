@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-class Product extends Model
+
+class contact extends Model
 {
     use CrudTrait;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
+
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'product';
+    protected $table = 'contacts';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = ['name', 'price', 'sale_price', 'cat_id', 'descriptions', 'author', 'publisher', 'size', 'page', 'status'];
+    // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -28,12 +28,6 @@ class Product extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
-
-    public function category()
-    {
-        return $this->belongsTo('Backpack\NewsCRUD\app\Models\Category', 'category_id');
-    }
 
     /*
     |--------------------------------------------------------------------------
