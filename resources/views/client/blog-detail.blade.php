@@ -21,7 +21,7 @@
 					<div class="col-lg-9 order-lg-2 mb--40 mb-lg--0">
 						<div class="blog-post post-details mb--50">
 							<div class="blog-image">
-								<img src="client/image/others/{{$blog -> image}}" alt="">
+								<img src="{{$blog -> image }}" alt="">
 							</div>
 							<div class="blog-content mt--30">
 								<header>
@@ -41,7 +41,7 @@
 									</div>
 								</header>
 								<article>
-									{{$blog -> content }}
+									{!! $blog -> content !!}
 								</article>
 								<footer class="blog-meta">
 									<div> <a href="#">3 comments </a> / TAGS: <a href="#">fashion</a>, <a

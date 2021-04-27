@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use Backpack\NewsCRUD\app\Models\Category;
 use App\Models\Config;
-use App\Models\Blog;
+use Backpack\NewsCRUD\app\Models\Article;
 
 class ClientController extends Controller
 {
@@ -33,11 +33,11 @@ class ClientController extends Controller
         return view("client.about");
     }
     public function blog(){
-        $blog = Blog::all();
+        $blog = Article::all();
     	return view("client.blog",compact('blog'));
     }
     public function blog_detail($id){
-        $blog = Blog::where('id',$id)->first();
+        $blog = Article::where('id',$id)->first();
         if($blog == null){
             return view("errors.400");
         }else{
