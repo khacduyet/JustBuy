@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Admin;
 
-use App\Http\Requests\ContactRequest;
+use App\Http\Requests\contactRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ContactCrudController
+ * Class contactCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ContactCrudController extends CrudController
+class contactCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,7 +26,7 @@ class ContactCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Contact::class);
+        CRUD::setModel(\App\Models\contact::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact');
         CRUD::setEntityNameStrings('contact', 'contacts');
     }
@@ -39,7 +39,11 @@ class ContactCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        CRUD::column('name');
+        CRUD::column('email');
+        CRUD::column('phone');
+        CRUD::column('message');
+        CRUD::column('status');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -54,7 +58,22 @@ class ContactCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
+    protected function setupCreateOperation()
+    {
+        CRUD::setValidation(contactRequest::class);
 
+        CRUD::field('name');
+        CRUD::field('email');
+        CRUD::field('phone');
+        CRUD::field('message');
+        CRUD::field('status');
+
+        /**
+         * Fields can be defined using the fluent syntax or array syntax:
+         * - CRUD::field('price')->type('number');
+         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         */
+    }
 
     /**
      * Define what happens when the Update operation is loaded.

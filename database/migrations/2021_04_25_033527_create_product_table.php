@@ -26,7 +26,6 @@ class CreateProductTable extends Migration
             $table->string('size');
             $table->integer('page');
             $table->tinyInteger('status');
-            $table->foreign('cat_id')->references('id')->on('category');
             $table->timestamps();
         });
     }
