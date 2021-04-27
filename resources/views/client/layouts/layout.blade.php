@@ -61,7 +61,7 @@
                                 <div class="cart-widget">
                                     <div class="login-block">
                                         <a href="login-register.html" class="font-weight-bold">Login</a> <br>
-                                        <span>or</span><a href="login-register.html">Register</a>
+                                        <span>or</span><a href="">Register</a>
                                     </div>
                                     <div class="cart-block">
                                         <div class="cart-total">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\LoginController;
 use App\Http\Controllers\CartController;
 
 /*
@@ -31,7 +32,9 @@ Route::get('/wishlist', [ClientController::class, 'wishlist']) -> name("wishlist
 Route::get('/order-complete', [ClientController::class, 'order_complete']) -> name("order-complete");
 Route::get('/my-account', [ClientController::class, 'my_account']) -> name("my-account");
 Route::get('/login', [ClientController::class, 'login']) -> name("login");
-Route::get('/register', [ClientController::class, 'register']) -> name("register");
+Route::post('/login', [LoginController::class, 'postLogin']) -> name("login");
+Route::get('/register', [LoginController::class, 'register']) -> name("register");
+Route::post('/register', [LoginController::class, 'postRegister']) -> name("register");
 Route::get('/checkout', [ClientController::class, 'checkout']) -> name("checkout");
 // cart
 Route::get('/cart', [CartController::class, 'cart']) -> name("cart");

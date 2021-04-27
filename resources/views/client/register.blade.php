@@ -21,30 +21,41 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12 offset-3">
-						<form action="#">
+						@if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+						<form method="post"  enctype="multipart/form-data">
+							@csrf
 							<div class="login-form">
 								<h4 class="login-title">New Customer</h4>
 								<p><span class="font-weight-bold">I am a new customer</span></p>
 								<div class="row">
 									<div class="col-md-12 col-12 mb--15">
 										<label for="email">Full Name</label>
-										<input class="mb-0 form-control" type="text" id="name"
+										<input class="mb-0 form-control" type="text" id="name" name = "name"
 											placeholder="Enter your full name">
 									</div>
 									<div class="col-12 mb--20">
 										<label for="email">Email</label>
-										<input class="mb-0 form-control" type="email" id="email" placeholder="Enter Your Email Address Here..">
+										<input class="mb-0 form-control" type="email" name = "email" id="email" placeholder="Enter Your Email Address Here..">
 									</div>
 									<div class="col-lg-6 mb--20">
 										<label for="password">Password</label>
-										<input class="mb-0 form-control" type="password" id="password" placeholder="Enter your password">
+										<input class="mb-0 form-control" type="password" name= "password" id="password" placeholder="Enter your password">
 									</div>
 									<div class="col-lg-6 mb--20">
 										<label for="password">Repeat Password</label>
-										<input class="mb-0 form-control" type="password" id="repeat-password" placeholder="Repeat your password">
+										<input class="mb-0 form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Repeat your password">
 									</div>
 									<div class="col-md-12">
-										<a href="#" class="btn btn-outlined">Register</a>
+										<button type="submit" value="submit" id="submit" class="btn btn-black"
+										name="submit">send</button>
 									</div>
 								</div>
 							</div>
