@@ -32,7 +32,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo('Backpack\NewsCRUD\app\Models\Category', 'category_id');
+        return $this->belongsTo('Backpack\NewsCRUD\app\Models\Category', 'cat_id');
     }
 
     /*
