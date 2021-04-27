@@ -22,22 +22,24 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 offset-3 mb--30 mb-lg--0">
 						<!-- Login Form s-->
-						<form action="">
+						<form method="post"  enctype="multipart/form-data">
+							@csrf
 							<div class="login-form">
 								<h4 class="login-title">Returning Customer</h4>
 								<p><span class="font-weight-bold">I am a returning customer</span></p>
 								<div class="row">
 									<div class="col-md-12 col-12 mb--15">
 										<label for="email">Enter your email address here...</label>
-										<input class="mb-0 form-control" type="email" id="email1"
+										<input class="mb-0 form-control" type="email" id="email1" name = "email"
 											placeholder="Enter you email address here...">
 									</div>
 									<div class="col-12 mb--20">
 										<label for="password">Password</label>
-										<input class="mb-0 form-control" type="password" id="login-password" placeholder="Enter your password">
+										<input class="mb-0 form-control" type="password" name = "password"id="login-password" placeholder="Enter your password">
 									</div>
 									<div class="col-md-12">
-										<a href="#" class="btn btn-outlined">Login</a>
+										<button type="submit" value="submit" id="submit" class="btn btn-black"
+										name="submit">Login</button>
 									</div>
 								</div>
 							</div>
