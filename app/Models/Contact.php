@@ -23,7 +23,7 @@ class Contact extends Model
 			[
 				'con_name' => 'required',
 				'con_email' => 'required',
-				'con_phone' => 'required',
+				'con_phone' => 'required|numeric',
                 'con_message' => 'required'
 			],
 			[
@@ -31,10 +31,10 @@ class Contact extends Model
 				
 			],
 			[
-                 'con_name' => 'Tên ',
-                 'con_email' => 'email',
-                 'con_phone' => 'Số điện thoại',
-                 'con_message' =>'Tin nhắn'
+                 'con_name' => 'Name ',
+                 'con_email' => 'Email',
+                 'con_phone' => 'Phone',
+                 'con_message' =>'Message'
 			]
 		);
 		$models = $this->create([

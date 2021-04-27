@@ -54,7 +54,7 @@ class LoginController extends Controller
     }
     public function postLogOut(Request $request,Customer $user){
         $user->logout();
-        return redirect()->route('login_user') -> with('success','Mời đăng nhập lại');
+        return redirect()->route('login') -> with('success','Mời đăng nhập lại');
     }
 
     public function forget_pass() {

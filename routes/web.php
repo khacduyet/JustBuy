@@ -33,6 +33,8 @@ Route::get('/order-complete', [ClientController::class, 'order_complete']) -> na
 Route::get('/my-account', [ClientController::class, 'my_account']) -> name("my-account");
 Route::get('/login', [ClientController::class, 'login']) -> name("login");
 Route::post('/login', [LoginController::class, 'postLogin']) -> name("login");
+Route::get('/logout', [LoginController::class, 'postLogOut']) -> name("logout");
+Route::post('/logout', [LoginController::class, 'postLogOut']) -> name("logout");
 Route::get('/register', [LoginController::class, 'register']) -> name("register");
 Route::post('/register', [LoginController::class, 'postRegister']) -> name("register");
 Route::get('/checkout', [ClientController::class, 'checkout']) -> name("checkout");

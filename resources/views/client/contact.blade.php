@@ -1,7 +1,6 @@
 @extends('client.layouts.layout')
 @section('content')
 @section('title',"Contact")
-		
 		<section class="breadcrumb-section">
             <h2 class="sr-only">Site Breadcrumb</h2>
             <div class="container">
@@ -84,13 +83,14 @@
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        <li>{{ $errors->has('message') }}</li>
-                                       
-                                    </ul>
-                                </div>
-                            @endif
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <form  method="post" class="contact-form" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -111,17 +111,9 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            {{-- <label>Your Email <span class="required">*</span></label> --}}
+                                            <label>Your Email<span class="required">*</span></label>
                                             <input type="email" id="con_email" name="con_email" class="form-control"
                                                 required>
-                                                @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        <li>{{ $errors->has('email') }}</li>
-                                                       
-                                                    </ul>
-                                                </div>
-                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -143,14 +135,9 @@
                                             <label>Your Message</label>
                                             <textarea id="con_message" name="con_message"
                                                 class="form-control"></textarea>
-                                                @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        <li>{{ $errors->has('message') }}</li>
-                                                       
-                                                    </ul>
-                                                </div>
-                                            @endif
+                                                @error('message')
+                                                <span class="error-message">{{$message}}</span>
+                                           @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
