@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class ClientController extends Controller
 {
+    public function __construct(){
+        $this->middleware(function($request,$next){
+            view()->share([
+                'category' => Category::all(),
+                // 'brand' => brand::all(),
+                // 'config' => Config::all(),
+                // 'cart' => new cart(),
+            ]);
+            return $next($request);
+        });
+    }
     public function index(){
     	return view("client.index");
     }
