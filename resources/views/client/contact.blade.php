@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Your Email<span class="required">*</span></label>
+                                           <label>Your Email <span class="required">*</span></label>
                                             <input type="email" id="con_email" name="con_email" class="form-control"
                                                 required>
                                         </div>

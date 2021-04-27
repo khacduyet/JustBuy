@@ -131,7 +131,13 @@ class ClientController extends Controller
             [5, "pro 5", 4500],
         );
 		return view('client.ajax._list_product', compact('products'));
-	}
+    }
+    
+    public function viewModalProduct($id) {
+        // select product where id
+        $product = [1, "pro 1", 4500];
+		return view('client.ajax.modal', compact('product'));
+    }
 	
 	public function searchBlog($name) {
 		$blogs = array(
@@ -141,5 +147,7 @@ class ClientController extends Controller
 			[4, "Blog 4", "description 4"],
         );
 		return view('client.ajax._list_blog', compact('blogs'));
-	}
+    }
+    
+    
 }
