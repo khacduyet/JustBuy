@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\ConfigRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class CategoryCrudController
+ * Class ConfigCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class CategoryCrudController extends CrudController
+class ConfigCrudController extends CrudController
 {
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation { reorder as traitReorder; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
@@ -25,29 +24,11 @@ class CategoryCrudController extends CrudController
      * 
      * @return void
      */
-
-    protected function setupReorderOperation()
-    {
-        // define which model attribute will be shown on draggable elements 
-        $this->crud->set('reorder.label', 'name');
-        // define how deep the admin is allowed to nest the items
-        // for infinite levels, set it to 0
-        $this->crud->set('reorder.max_level', 3);
-    }
-
-    public function reorder()
-    {
-        // your custom code here
-
-        // call the method in the trait
-        return $this->traitReorder();
-    }
-
     public function setup()
     {
-        CRUD::setModel(\App\Models\Category::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/category');
-        CRUD::setEntityNameStrings('category', 'categories');
+        CRUD::setModel(\App\Models\Config::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/config');
+        CRUD::setEntityNameStrings('config', 'configs');
     }
 
     /**
@@ -58,9 +39,7 @@ class CategoryCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-       
-        CRUD::column('name')->type('text');
-        CRUD::column('status');
+        CRUD::setFromDb(); // columns
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -77,11 +56,10 @@ class CategoryCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(CategoryRequest::class);
+        CRUD::setValidation(ConfigRequest::class);
 
-        // CRUD::setFromDb(); // fields
-        CRUD::addField(['name' => 'name', 'type' => 'text']); 
-        CRUD::addField(['name' => 'status']); 
+        CRUD::setFromDb(); // fields
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

@@ -340,14 +340,38 @@
 									</div>
 								</div>
 							</div>
-							<div class="modal-footer">
-								<div class="widget-social-share">
-									<span class="widget-label">Share:</span>
-									<div class="modal-social-share">
-										<a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
-										<a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
-										<a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
-										<a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
+						</div>
+					</div>
+					<div class="col-lg-3  mt--40 mt-lg--0">
+						<div class="inner-page-sidebar">
+							<!-- Accordion -->
+							<div class="single-block">
+								<h3 class="sidebar-title">Categories</h3>
+								<ul class="sidebar-menu--shop">
+								@foreach($category as $cat)     
+                                    @if($cat -> parent_id == 0) 
+									<li><a href="#">{{$cat -> name}} (16)</a>
+										<ul class="inner-cat-items">
+										@foreach($category as $cat1)  
+											@if($cat -> id == ($cat1 -> parent_id))
+											<li><a href="#">{{$cat1 -> name}} (0)</a></li>
+											@endif
+										@endforeach
+										</ul>
+									</li>
+									@endif
+								@endforeach
+								</ul>
+							</div>
+							<!-- Price -->
+							<div class="single-block">
+								<h3 class="sidebar-title">Fillter By Price</h3>
+								<div class="range-slider pt--30">
+									<div class="sb-range-slider"></div>
+									<div class="slider-price">
+										<p>
+											<input type="text" id="amount" readonly="">
+										</p>
 									</div>
 								</div>
 							</div>

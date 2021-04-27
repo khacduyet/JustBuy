@@ -4,12 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Config;
+use App\Models\Blog;
 
 class ClientController extends Controller
 {
-    public function index()
-    {
-        return view("client.index");
+    public function __construct(){
+        $this->middleware(function($request,$next){
+            view()->share([
+                'category' => Category::all(),
+                // 'brand' => brand::all(),
+                'config' => Config::all(),
+                // 'cart' => new cart(),
+            ]);
+            return $next($request);
+        });
+    }
+    public function index(){
+    	return view("client.index");
     }
     public function shop()
     {
@@ -19,9 +32,9 @@ class ClientController extends Controller
     {
         return view("client.about");
     }
-    public function blog()
-    {
-        return view("client.blog");
+    public function blog(){
+        $blog = Blog::all();
+    	return view("client.blog",compact('blog'));
     }
     public function contact()
     {

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Library\CrudPanel\CrudField;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
@@ -39,8 +41,27 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
+        CRUD::column('name');
+        CRUD::column('price')->type('number');
+        CRUD::column('sale_price')->type('number');
+        // $this->crud->addColumn([
+        //     // 1-n relationship
+        //     'label' => "Category", // Table column heading
+        //     'type' => "select",
+        //     'name' => 'cat_id', // the column that contains the ID of that connected entity;
+        //     'entity' => 'fetchCategory', // the method that defines the relationship in your Model
+        //     'attribute' => "name", // foreign key attribute that is shown to user
+        //     'model' => "App\Models\Category", // foreign key model
+        //  ]);
+         CRUD::addColumn([
+            'name'    => 'photos',
+            'label'   => 'Photos',
+            'type'    => 'array',
+            // 'disk' => 'public', // filesystem disk if you're using S3 or something custom
+        ]);
+        CRUD::column('status ');
+        // CRUD::setFromDb(); // columns
+        
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -64,7 +85,7 @@ class ProductCrudController extends CrudController
         CRUD::field('sale_price')->type('number');
         $this->crud->addField([  // Select2
             'label'     => "Category",
-            'type'      => 'select2',
+            'type'      => 'select2_nested',
             'name'      => 'cat_id', // the db column for the foreign key
 
             // optional
@@ -80,16 +101,29 @@ class ProductCrudController extends CrudController
         ]);
         CRUD::field('descriptions')->type('ckeditor');
 
-        $this->crud->addField([
-            'label' => "Profile Image",
-            'name' => "list_image",
-            'type' => 'image',
-            'crop' => false, // set to true to allow cropping, false to disable
-            'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
-            'disk'      => 'uploads', // in case you need to show images from a different disk
-            'prefix'    => 'uploads/images/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+        $this->crud->addField([   // Upload
+            'name'      => 'photos',
+            'label'     => 'Photos',
+            'type'      => 'upload_multiple',
+            'upload'    => true,
+            'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
+            // optional:
+            'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
         ]);
+        // $this->crud->addField([
+        //     'label' => "Profile Image",
+        //     'name' => "list_image",
+        //     'type' => 'image',
+        //     'crop' => false, // set to true to allow cropping, false to disable
+        //     'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+        //     'disk'      => 'uploads', // in case you need to show images from a different disk
+        //     'prefix'    => 'uploads/images/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+        // ]);
 
+        CRUD::field('author');
+        CRUD::field('publisher');
+        CRUD::field('size');
+        CRUD::field('page');
         CRUD::field('status');
 
         /**
@@ -108,38 +142,5 @@ class ProductCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
-
-        // CRUD::setValidation(ProductRequest::class);
-        
-        // CRUD::field('name');
-        // CRUD::field('price')->type('number');
-        // CRUD::field('sale_price')->type('number');
-        // $this->crud->addField([  // Select2
-        //     'label'     => "Category",
-        //     'type'      => 'select2',
-        //     'name'      => 'cat_id', // the db column for the foreign key
-
-        //     // optional
-        //     'entity'    => 'fetchCategory', // the method that defines the relationship in your Model
-        //     'model'     => "App\Models\Category", // foreign key model
-        //     'attribute' => 'name', // foreign key attribute that is shown to user
-        //     'default'   => 0, // set the default value of the select2
-
-        //     // also optional
-        //     'options'   => (function ($query) {
-        //         return $query->orderBy('name', 'DESC')->get();
-        //     }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
-        // ]);
-        // CRUD::field('descriptions')->type('ckeditor');
-        // $this->crud->addField([   // Upload
-        //     'name'      => 'list_image',
-        //     'label'     => 'Photos',
-        //     'type'      => 'upload_multiple',
-        //     'upload'    => true,
-        //     'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
-        //     // optional:
-        //     'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
-        // ]);
-        // CRUD::field('status');
     }
 }

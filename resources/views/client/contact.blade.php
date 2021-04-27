@@ -40,7 +40,13 @@
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><span>Address:</span> 1234 - Bandit Tringi lAliquam <br> Vitae. New York</p>
+                                        <p><span>Address:</span> 
+                                        @foreach($config as $con)
+                                            @if($con->name == 'Address')
+                                            {{$con->content}}
+                                            @endif
+                                        @endforeach
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="address">
@@ -48,7 +54,13 @@
                                         <i class="far fa-envelope"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><span>Email: </span> support@example.com </p>
+                                        <p><span>Email: </span> 
+                                        @foreach($config as $con)
+                                            @if($con->name == 'Email')
+                                            {{$con->content}}
+                                            @endif
+                                        @endforeach
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="address">
@@ -56,7 +68,13 @@
                                         <i class="fas fa-mobile-alt"></i>
                                     </div>
                                     <div class="contact-info-text">
-                                        <p><span>Phone:</span> (800) 0123 456 789 </p>
+                                        <p><span>Phone:</span> 
+                                        @foreach($config as $con)
+                                            @if($con->name == 'Phone')
+                                            {{$con->content}}
+                                            @endif
+                                        @endforeach
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -65,26 +83,59 @@
                     <div class="col-lg-7 col-md-7 col-12 mt--30 mt-md--0">
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
-                            <form id="contact-form" action="https://demo.hasthemes.com/pustok-preview/pustok/php/mail.php" method="post" class="contact-form">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <li>{{ $errors->has('message') }}</li>
+                                       
+                                    </ul>
+                                </div>
+                            @endif
+                            <form  method="post" class="contact-form" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Name <span class="required">*</span></label>
                                             <input type="text" id="con_name" name="con_name" class="form-control"
                                                 required>
+                                                @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('name') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Your Email <span class="required">*</span></label>
+                                            {{-- <label>Your Email <span class="required">*</span></label> --}}
                                             <input type="email" id="con_email" name="con_email" class="form-control"
                                                 required>
+                                                @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('email') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Phone*</label>
                                             <input type="text" id="con_phone" name="con_phone" class="form-control">
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('phone') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -92,6 +143,14 @@
                                             <label>Your Message</label>
                                             <textarea id="con_message" name="con_message"
                                                 class="form-control"></textarea>
+                                                @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{ $errors->has('message') }}</li>
+                                                       
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -99,7 +158,6 @@
                                             <button type="submit" value="submit" id="submit" class="btn btn-black"
                                                 name="submit">send</button>
                                         </div>
-                                        <div class="form__output"></div>
                                     </div>
                                 </div>
                             </form>
