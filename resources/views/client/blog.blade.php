@@ -59,16 +59,6 @@
                                     <button><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
-                            <div class="single-block">
-                                <h2 class="sidebar-title mb--30">BLOG ARCHIVES</h2>
-                                <ul class="sidebar-list mb--30">
-                                    <li><a href="#"> March 2015 (1)</a></li>
-                                    <li><a href="#">December 2014 (3)</a></li>
-                                    <li> <a href="#">November 2014 (4)</a></li>
-                                    <li><a href="#">September 2014 (1)</a></li>
-                                    <li><a href="#">August 2014 (1)</a></li>
-                                </ul>
-                            </div>
                             <div class="single-block ">
                                 <h2 class="sidebar-title mb--30">RECENT POSTS</h2>
                                 <ul class="sidebar-list">

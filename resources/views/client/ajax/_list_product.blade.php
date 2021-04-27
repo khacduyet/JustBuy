@@ -26,7 +26,7 @@
                             <a href="compare.html" class="single-btn">
                                 <i class="fas fa-random"></i>
                             </a>
-                            <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
+                            <a href="#" data-toggle="modal" data-target="#quickModal1" class="single-btn">
                                 <i class="fas fa-eye"></i>
                             </a>
                         </div>
@@ -80,4 +80,3 @@
         </div>
     </div>
 </div>
-@endforeach
