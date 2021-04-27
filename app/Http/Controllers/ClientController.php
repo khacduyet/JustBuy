@@ -6,6 +6,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Config;
+use App\Models\Blog;
 
 class ClientController extends Controller
 {
@@ -13,7 +14,6 @@ class ClientController extends Controller
         $this->middleware(function($request,$next){
             view()->share([
                 'category' => Category::all(),
-                // 'banners' => banner::where('status',1)->get(),
                 // 'brand' => brand::all(),
                 'config' => Config::all(),
                 // 'cart' => new cart(),
@@ -31,7 +31,8 @@ class ClientController extends Controller
     	return view("client.about");
     }
     public function blog(){
-    	return view("client.blog");
+        $blog = Blog::all();
+    	return view("client.blog",compact('blog'));
     }
     public function contact(){
     	return view("client.contact");

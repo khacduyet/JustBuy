@@ -274,8 +274,22 @@
                     </nav>
                     <div class="off-canvas-bottom">
                         <div class="contact-list mb--10">
-                            <a href="#" class="sin-contact"><i class="fas fa-mobile-alt"></i>(12345) 78790220</a>
-                            <a href="#" class="sin-contact"><i class="fas fa-envelope"></i>examle@handart.com</a>
+                            <a href="#" class="sin-contact">
+                                <i class="fas fa-mobile-alt"></i>
+                                @foreach($config as $con)
+                                    @if($con->name == 'Phone')
+                                    {{$con->content}}
+                                    @endif
+                                @endforeach
+                            </a>
+                            <a href="#" class="sin-contact">
+                                <i class="fas fa-envelope"></i>
+                                @foreach($config as $con)
+                                    @if($con->name == 'Email')
+                                    {{$con->content}}
+                                    @endif
+                                @endforeach
+                            </a>
                         </div>
                         <div class="off-canvas-social">
                             <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
@@ -385,10 +399,36 @@
                             <img src="client/image/logo--footer.png" alt="">
                         </div>
                         <div class="footer-contact">
-                            <p><span class="label">Address:</span><span class="text">Example Street 98, HH2 BacHa, New
-                                    York, USA</span></p>
-                            <p><span class="label">Phone:</span><span class="text">+18088 234 5678</span></p>
-                            <p><span class="label">Email:</span><span class="text">suport@hastech.com</span></p>
+                            <p>
+                            <span class="label">Address:</span>
+                                <span class="text">
+                                @foreach($config as $con)
+                                    @if($con->name == 'Address')
+                                    {{$con->content}}
+                                    @endif
+                                @endforeach
+                                </span>
+                            </p>
+                            <p>
+                                <span class="label">Phone:</span>
+                                <span class="text">
+                                @foreach($config as $con)
+                                    @if($con->name == 'Phone')
+                                    {{$con->content}}
+                                    @endif
+                                @endforeach
+                                </span>
+                            </p>
+                            <p>
+                                <span class="label">Email:</span>
+                                <span class="text">
+                                @foreach($config as $con)
+                                    @if($con->name == 'Email')
+                                    {{$con->content}}
+                                    @endif
+                                @endforeach
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
