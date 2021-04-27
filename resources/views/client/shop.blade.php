@@ -229,18 +229,19 @@
 					<div class="single-block">
 						<h3 class="sidebar-title">Categories</h3>
 						<ul class="sidebar-menu--shop">
-							<!-- Truyền cat id vào thuộc tính at -->
-							<li><a class="filter-category" at="1" href="#">Truyện tranh</a></li>
-							<li><a class="filter-category" at="2" href="#">Tiểu thuyết</a></li>
-							<li><a class="filter-category" at="3" href="#">Sách tranh</a></li>
-							<li><a href="#">Shop (16)</a>
+						@foreach($category as $cat)     
+                            @if($cat -> parent_id == 0)   
+							<li><a href="#">{{$cat -> name}} (16)</a>
 								<ul class="inner-cat-items">
-									<li><a href="#">Saws (0)</a></li>
-									<li><a href="#">Concrete Tools (7)</a></li>
-									<li><a href="#">Drills (2)</a></li>
-									<li><a href="#">Sanders (1)</a></li>
+								@foreach($category as $cat1)  
+									@if($cat -> id == ($cat1 -> parent_id))
+									<li><a href="#">{{$cat1 -> name}} (0)</a></li>
+									@endif
+								@endforeach
 								</ul>
 							</li>
+							@endif
+                        @endforeach
 						</ul>
 					</div>
 					<!-- Price -->
