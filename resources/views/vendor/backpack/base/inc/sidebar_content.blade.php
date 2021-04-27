@@ -11,5 +11,3 @@
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('config') }}'><i class='nav-icon la la-bullseye'></i> Configs </a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('elfinder') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
-
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('admin\contact') }}'><i class='nav-icon la la-question'></i> Admin\contacts</a></li>
