@@ -13,8 +13,9 @@ class ClientController extends Controller
         $this->middleware(function($request,$next){
             view()->share([
                 'category' => Category::all(),
-                'config' => Config::all(),
+                // 'banners' => banner::where('status',1)->get(),
                 // 'brand' => brand::all(),
+                'config' => Config::all(),
                 // 'cart' => new cart(),
             ]);
             return $next($request);

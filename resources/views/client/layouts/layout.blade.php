@@ -144,7 +144,7 @@
                                     <p class="font-weight-bold number">
                                     @foreach($config as $con)
                                         @if($con->name == 'Phone')
-                                        {$con->content}
+                                        {{$con->content}}
                                         @endif
                                     @endforeach
                                     </p>
