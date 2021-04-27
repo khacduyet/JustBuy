@@ -37,12 +37,13 @@ Route::get('/register', [LoginController::class, 'register']) -> name("register"
 Route::post('/register', [LoginController::class, 'postRegister']) -> name("register");
 Route::get('/checkout', [ClientController::class, 'checkout']) -> name("checkout");
 
-
+// ajax
 Route::get('/filter-product-by-categrory/{id}', [ClientController::class, 'filterProductByCategoryId']) -> name("filter-product-by-categrory");
 Route::get('/filter-product-by-author/{name}', [ClientController::class, 'filterProductByAuthor']) -> name("filter-product-by-author");
 Route::get('/show-product/{page}', [ClientController::class, 'showProduct']) -> name("show-product");
 Route::get('/sort-product/{value}', [ClientController::class, 'sortProduct']) -> name("sort-product");
 Route::get('/search-blog/{name}', [ClientController::class, 'searchBlog']) -> name("search-blog");
+Route::get('/view-modal-product/{id}', [ClientController::class, 'viewModalProduct']) -> name("view-modal-product");
 
 
 // cart

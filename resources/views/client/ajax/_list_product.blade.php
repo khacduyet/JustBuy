@@ -1,4 +1,3 @@
-
 @foreach ($products as $pro)
 <div class="col-lg-4 col-sm-6">
     <div class="product-card">
@@ -7,7 +6,7 @@
                 <a href="#" class="author">
                     Epple
                 </a>
-                <h3><a href="product-details.html"><?php echo $pro[1] ?></a></h3>
+                <h3><a href="product-details.html">{{ $pro[1] }}</a></h3>
             </div>
             <div class="product-card--body">
                 <div class="card-image">
@@ -26,7 +25,8 @@
                             <a href="compare.html" class="single-btn">
                                 <i class="fas fa-random"></i>
                             </a>
-                            <a href="#" data-toggle="modal" data-target="#quickModal1" class="single-btn">
+
+                            <a href="#" data-toggle="modal" at="{{ $pro[0] }}" data-target="#quickModal" class="single-btn view-modal">
                                 <i class="fas fa-eye"></i>
                             </a>
                         </div>
@@ -80,3 +80,5 @@
         </div>
     </div>
 </div>
+
+@endforeach
