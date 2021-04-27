@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Category extends Model
+class contact extends Model
 {
-    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use CrudTrait;
 
     /*
@@ -17,7 +15,7 @@ class Category extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'category';
+    protected $table = 'contacts';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -31,19 +29,12 @@ class Category extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function fetchCategory()
-    {
-        return $this->fetch(\App\Models\Category::class);
-    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function children()
-    {
-        return $this->hasMany(self::class, 'parent_id','id');
-    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

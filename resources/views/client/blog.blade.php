@@ -25,7 +25,7 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <a href="{{route('blog-detail',['id'=>$blg->id])}}" class="image d-block">
-                                            <img src="client/image/others/{{$blg -> image}}" alt="">
+                                            <img src="{{$blg -> image }}" alt="">
                                         </a>
                                     </div>
                                     <div class="col-md-6">
@@ -39,7 +39,7 @@
                                                     Blog Article
                                                 </h2>
                                                 <p class="row-2">
-                                                    {{$blg -> content}}
+                                                    {!!$blg -> content!!}
                                                 </p>
                                                 <a href="{{route('blog-detail',['id'=>$blg->id])}}" class="blog-link">Read More</a>
                                             </article>

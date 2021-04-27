@@ -54,10 +54,15 @@ class ProductCrudController extends CrudController
         //     'model' => "App\Models\Category", // foreign key model
         //  ]);
          CRUD::addColumn([
-            'name'    => 'photos',
-            'label'   => 'Photos',
-            'type'    => 'array',
-             'disk' => 'uploads', // filesystem disk if you're using S3 or something custom
+            'name'      => 'photos', // The db column name
+            'label'     => 'Product Image', // Table column heading
+            'type'      => 'image',
+            // 'prefix' => 'folder/subfolder/',
+            // image from a different disk (like s3 bucket)
+            // 'disk'   => 'disk-name', 
+            // optional width/height if 25px is not ok with you
+            'height' => '100px',
+            'width'  => '100px',
         ]);
         CRUD::column('status ');
         // CRUD::setFromDb(); // columns
@@ -86,30 +91,24 @@ class ProductCrudController extends CrudController
         $this->crud->addField([  // Select2
             'label'     => "Category",
             'type'      => 'select2_nested',
-            'name'      => 'cat_id', // the db column for the foreign key
-
+            'name'      => 'cat_id',// the db column for the foreign key
             // optional
-            'entity'    => 'fetchCategory', // the method that defines the relationship in your Model
-            'model'     => "App\Models\Category", // foreign key model
+            'entity'    => 'category', // the method that defines the relationship in your Model
+            'model'     => "\Backpack\NewsCRUD\app\Models\Category", // foreign key model
             'attribute' => 'name', // foreign key attribute that is shown to user
-            'default'   => 0, // set the default value of the select2
-
-            // also optional
-            'options'   => (function ($query) {
-                return $query->orderBy('name', 'DESC')->get();
-            }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
         ]);
         CRUD::field('descriptions')->type('ckeditor');
 
         $this->crud->addField([
             'label' => "Profile Image",
             'name' => "photos",
-            'type' => 'image',
+            'type' => 'browse',
             'crop' => true, // set to true to allow cropping, false to disable
             'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
             // 'disk'      => 's3_bucket', // in case you need to show images from a different disk
             // 'prefix'    => 'uploads/images/profile_pictures/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
         ]);
+
         // $this->crud->addField([
         //     'label' => "Profile Image",
         //     'name' => "list_image",

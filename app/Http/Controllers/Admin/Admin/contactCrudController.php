@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Admin;
 
-use App\Http\Requests\BlogRequest;
+use App\Http\Requests\contactRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class BlogCrudController
+ * Class contactCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class BlogCrudController extends CrudController
+class contactCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class BlogCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Blog::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/blog');
-        CRUD::setEntityNameStrings('blog', 'blogs');
+        CRUD::setModel(\App\Models\contact::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/contact');
+        CRUD::setEntityNameStrings('contact', 'contacts');
     }
 
     /**
@@ -39,7 +39,11 @@ class BlogCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        CRUD::column('name');
+        CRUD::column('email');
+        CRUD::column('phone');
+        CRUD::column('message');
+        CRUD::column('status');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -56,21 +60,13 @@ class BlogCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(BlogRequest::class);
+        CRUD::setValidation(contactRequest::class);
 
-        // CRUD::setFromDb(); // fields
-        CRUD::field('title');
-        $this->crud->addField([
-            'label' => "Profile Image",
-            'name' => "image",
-            'type' => 'image',
-            'crop' => false, // set to true to allow cropping, false to disable
-            'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
-            // 'disk'      => 'uploads', // in case you need to show images from a different disk
-            // 'prefix'    => 'uploads/images/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
-        ]);
-        CRUD::field('content')->type('ckeditor');
-        Crud::field('status');
+        CRUD::field('name');
+        CRUD::field('email');
+        CRUD::field('phone');
+        CRUD::field('message');
+        CRUD::field('status');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
