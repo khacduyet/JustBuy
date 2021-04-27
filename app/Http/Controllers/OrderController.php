@@ -15,7 +15,7 @@
 	use Session;
 
 
-	class orderController extends Controller{
+	class OrderController extends Controller{
 		public function __construct(){
 			$this->middleware(function($request,$next){
 				view()->share([
