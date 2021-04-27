@@ -57,7 +57,7 @@ class ProductCrudController extends CrudController
             'name'    => 'photos',
             'label'   => 'Photos',
             'type'    => 'array',
-            // 'disk' => 'public', // filesystem disk if you're using S3 or something custom
+             'disk' => 'uploads', // filesystem disk if you're using S3 or something custom
         ]);
         CRUD::column('status ');
         // CRUD::setFromDb(); // columns
@@ -101,14 +101,14 @@ class ProductCrudController extends CrudController
         ]);
         CRUD::field('descriptions')->type('ckeditor');
 
-        $this->crud->addField([   // Upload
-            'name'      => 'photos',
-            'label'     => 'Photos',
-            'type'      => 'upload_multiple',
-            'upload'    => true,
-            'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
-            // optional:
-            'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
+        $this->crud->addField([
+            'label' => "Profile Image",
+            'name' => "photos",
+            'type' => 'image',
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            // 'disk'      => 's3_bucket', // in case you need to show images from a different disk
+            // 'prefix'    => 'uploads/images/profile_pictures/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
         ]);
         // $this->crud->addField([
         //     'label' => "Profile Image",
