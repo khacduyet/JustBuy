@@ -20,7 +20,7 @@ class CreateProductTable extends Migration
             $table->float('sale_price');
             $table->unsignedBigInteger('cat_id');
             $table->text('descriptions');
-            $table->text('list_image');
+            $table->text('photos');
             $table->string('author');
             $table->string('publisher');
             $table->string('size');
