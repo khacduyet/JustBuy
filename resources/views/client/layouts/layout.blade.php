@@ -141,7 +141,13 @@
                                 </div>
                                 <div class="text">
                                     <p>Free Support 24/7</p>
-                                    <p class="font-weight-bold number">+01-202-555-0181</p>
+                                    <p class="font-weight-bold number">
+                                    @foreach($config as $con)
+                                        @if($con->name == 'Phone')
+                                        {$con->content}
+                                        @endif
+                                    @endforeach
+                                    </p>
                                 </div>
                             </div>
                         </div>

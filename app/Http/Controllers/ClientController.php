@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Config;
 
 class ClientController extends Controller
 {
@@ -12,8 +13,8 @@ class ClientController extends Controller
         $this->middleware(function($request,$next){
             view()->share([
                 'category' => Category::all(),
+                'config' => Config::all(),
                 // 'brand' => brand::all(),
-                // 'config' => Config::all(),
                 // 'cart' => new cart(),
             ]);
             return $next($request);
