@@ -39,8 +39,19 @@ class BannerCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
+        CRUD::column('title');
+        
+        CRUD::addColumn([
+            'name'      => 'image', // The db column name
+            'label'     => 'Product Image', // Table column heading
+            'type'      => 'image',
+            // 'prefix' => 'folder/subfolder/',
+            // image from a different disk (like s3 bucket)
+            // 'disk'   => 'disk-name', 
+            // optional width/height if 25px is not ok with you
+            'height' => '100px',
+            'width'  => '100px',
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -69,7 +80,7 @@ class BannerCrudController extends CrudController
         $this->crud->addField([
             'label' => "Profile Image",
             'name' => "image",
-            'type' => 'image',
+            'type' => 'browse',
             'crop' => false, // set to true to allow cropping, false to disable
             'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
             // 'disk'      => 'uploads', // in case you need to show images from a different disk
