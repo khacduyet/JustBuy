@@ -7,46 +7,122 @@ use App\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
-    public function index(){
-    	return view("client.index");
+    public function index()
+    {
+        return view("client.index");
     }
-    public function shop(){
-    	return view("client.shop");
+    public function shop()
+    {
+        return view("client.shop");
     }
-    public function about(){
-    	return view("client.about");
+    public function about()
+    {
+        return view("client.about");
     }
-    public function blog(){
-    	return view("client.blog");
+    public function blog()
+    {
+        return view("client.blog");
     }
-    public function contact(){
-    	return view("client.contact");
+    public function contact()
+    {
+        return view("client.contact");
     }
-    public function product_detail(){
-    	return view("client.product-detail");
+    public function product_detail()
+    {
+        return view("client.product-detail");
     }
-    public function blog_detail(){
-    	return view("client.blog-detail");
+    public function blog_detail()
+    {
+        return view("client.blog-detail");
     }
-    public function wishlist(){
-    	return view("client.wishlist");
+    public function wishlist()
+    {
+        return view("client.wishlist");
     }
-    public function order_complete(){
-    	return view("client.order-complete");
+    public function order_complete()
+    {
+        return view("client.order-complete");
     }
-    public function my_account(){
-    	return view("client.my-account");
+    public function my_account()
+    {
+        return view("client.my-account");
     }
-    public function login(){
-    	return view("client.login");
+    public function login()
+    {
+        return view("client.login");
     }
-    public function register(){
-    	return view("client.register");
+    public function register()
+    {
+        return view("client.register");
     }
-    public function checkout(){
-    	return view("client.checkout");
+    public function checkout()
+    {
+        return view("client.checkout");
     }
-    public function cart(){
-    	return view("client.cart");
+    public function cart()
+    {
+        return view("client.cart");
     }
+
+    public function filterProductByCategoryId($id)
+    {
+        // filter data hear
+        $products = array(
+            [1, "pro 1", 4500],
+            [2, "pro 2", 4500],
+            [3, "pro 3", 4500],
+            [4, "pro 4", 4500],
+            [5, "pro 5", 4500],
+        );
+		return view('client.ajax._list_product', compact('products'));
+	}
+
+	public function filterProductByAuthor($name)
+    {
+        // filter data hear
+        $products = array(
+            [1, "pro 1", 4500],
+            [2, "pro 2", 4500],
+            [3, "pro 3", 4500],
+            [4, "pro 4", 4500],
+            [5, "pro 5", 4500],
+        );
+		return view('client.ajax._list_product', compact('products'));
+	}
+	
+	public function showProduct($page)
+    {
+        // filter data hear
+        $products = array(
+            [1, "pro 1", 4500],
+            [2, "pro 2", 4500],
+            [3, "pro 3", 4500],
+            [4, "pro 4", 4500],
+            [5, "pro 5", 4500],
+        );
+		return view('client.ajax._list_product', compact('products'));
+	}
+	
+	public function sortProduct($value)
+    {
+        // filter data hear
+        $products = array(
+            [1, "pro 1", 4500],
+            [2, "pro 2", 4500],
+            [3, "pro 3", 4500],
+            [4, "pro 4", 4500],
+            [5, "pro 5", 4500],
+        );
+		return view('client.ajax._list_product', compact('products'));
+	}
+	
+	public function searchBlog($name) {
+		$blogs = array(
+			[1, "Blog 1", "description 1"],
+			[2, "Blog 2", "description 2"],
+			[3, "Blog 3", "description 3"],
+			[4, "Blog 4", "description 4"],
+        );
+		return view('client.ajax._list_blog', compact('blogs'));
+	}
 }

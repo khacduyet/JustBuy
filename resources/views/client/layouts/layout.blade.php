@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="client/css/plugins.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="client/css/main.css" />
     <link rel="shortcut icon" type="client/image/x-icon" href="client/image/logo.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>

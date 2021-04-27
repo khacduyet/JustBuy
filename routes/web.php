@@ -31,3 +31,11 @@ Route::get('/login', [ClientController::class, 'login']) -> name("login");
 Route::get('/register', [ClientController::class, 'register']) -> name("register");
 Route::get('/checkout', [ClientController::class, 'checkout']) -> name("checkout");
 Route::get('/cart', [ClientController::class, 'cart']) -> name("cart");
+
+Route::get('/filter-product-by-categrory/{id}', [ClientController::class, 'filterProductByCategoryId']) -> name("filter-product-by-categrory");
+Route::get('/filter-product-by-author/{name}', [ClientController::class, 'filterProductByAuthor']) -> name("filter-product-by-author");
+Route::get('/show-product/{page}', [ClientController::class, 'showProduct']) -> name("show-product");
+Route::get('/sort-product/{value}', [ClientController::class, 'sortProduct']) -> name("sort-product");
+Route::get('/search-blog/{name}', [ClientController::class, 'searchBlog']) -> name("search-blog");
+
+
