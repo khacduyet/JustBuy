@@ -24,14 +24,14 @@
                             <div class="blog-card card-style-list">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <a href="blog-details.html" class="image d-block">
+                                        <a href="{{route('blog-detail',['id'=>$blg->id])}}" class="image d-block">
                                             <img src="client/image/others/{{$blg -> image}}" alt="">
                                         </a>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="card-content">
                                             <h3 class="title">
-                                                <a href="blog-details.html"> {{$blg -> title}} </a>
+                                                <a href="{{route('blog-detail',['id'=>$blg->id])}}"> {{$blg -> title}} </a>
                                             </h3>
                                             <p class="post-meta"><span>{{$blg -> created_at}} </span> | <a href="#">{{$blg -> user_id }}</a></p>
                                             <article>
@@ -41,7 +41,7 @@
                                                 <p class="row-2">
                                                     {{$blg -> content}}
                                                 </p>
-                                                <a href="blog-details.html" class="blog-link">Read More</a>
+                                                <a href="{{route('blog-detail',['id'=>$blg->id])}}" class="blog-link">Read More</a>
                                             </article>
                                         </div>
                                     </div>
