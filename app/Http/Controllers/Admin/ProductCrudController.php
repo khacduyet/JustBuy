@@ -92,17 +92,10 @@ class ProductCrudController extends CrudController
             'label'     => "Category",
             'type'      => 'select2_nested',
             'name'      => 'cat_id',// the db column for the foreign key
-
             // optional
-            'entity'    => 'fetchCategory', // the method that defines the relationship in your Model
+            'entity'    => 'category', // the method that defines the relationship in your Model
             'model'     => "\Backpack\NewsCRUD\app\Models\Category", // foreign key model
             'attribute' => 'name', // foreign key attribute that is shown to user
-            'default'   => 0, // set the default value of the select2
-
-            // also optional
-            'options'   => (function ($query) {
-                return $query->orderBy('name', 'DESC')->get();
-            }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
         ]);
         CRUD::field('descriptions')->type('ckeditor');
 
